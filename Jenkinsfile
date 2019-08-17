@@ -17,5 +17,15 @@ node{
      }
 	 sh 'docker push prabhatiitbhu/myweb:0.0.1'
  }
+ stage('Remove Previous Container'){
+	try{
+		def dockerRm = 'docker rm -f myweb'
+		sshagent(['docker-dev']) {
+			sh "ssh -o StrictHostKeyChecking=no ubuntu@34.230.45.59 ${dockerRm}"
+		}
+	}catch(error){
+		//  do nothing if there is an exception
+	}
+ }
  
 }
