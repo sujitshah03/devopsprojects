@@ -27,5 +27,12 @@ node{
 		//  do nothing if there is an exception
 	}
  }
+ stage('Deploy to Dev Environment'){
+   def dockerRun = 'docker run -d -p 8080:8080 --name myweb prabhatiitbhu/myweb:0.0.1 '
+   sshagent(['docker-dev']) {
+    sh "ssh -o StrictHostKeyChecking=no ubuntu@34.230.45.59 ${dockerRun}"
+   }
+
+ }
  
 }
