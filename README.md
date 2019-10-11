@@ -9,6 +9,8 @@ OpenJDK Runtime Environment (amzn-2.6.16.0.78.amzn1-x86_64 u201-b00)
 OpenJDK 64-Bit Server VM (build 24.201-b00, mixed mode)
 
 ```
+sudo yum update
+
 sudo yum list | grep java-1.8
 
 sudo yum install java-1.8.0-openjdk-devel.x86_64 -y
