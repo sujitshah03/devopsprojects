@@ -100,7 +100,7 @@ echo $JAVA_HOME
 ```
 cd /opt
 
-sudo wget http://www-us.apache.org/dist/tomcat/tomcat-9/v9.0.21/bin/apache-tomcat-9.0.21.tar.gz
+sudo wget http://www-us.apache.org/dist/tomcat/tomcat-9/v9.0.27/bin/apache-tomcat-9.0.27-deployer.tar.gz
 
 sudo tar -xvf apache-tomcat-9.0.21.tar.gz
 
