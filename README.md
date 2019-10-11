@@ -89,7 +89,7 @@ Enter to keep the current selection[+], or type selection number: 2
 ```
 nano .bashrc
 export JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.201.b09-0.amzn2.x86_64"
-PATH=$JAVA_HOME/bin:$PATH
+export PATH=$JAVA_HOME/bin:$PATH
 source .bashrc
 echo $JAVA_HOME
 ```
