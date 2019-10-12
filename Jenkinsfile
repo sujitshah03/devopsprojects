@@ -12,6 +12,6 @@ node{
 	}
 	}
 	stage('Slack Notification'){
-		slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#intelycore09', color: '#439FE0', message: 'New Build deployed', teamDomain: 'intelycore09', tokenCredentialId: 'slack-secret'
+		slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#intelycore09', color: '#439FE0', message: 'New Build deployed test', teamDomain: 'intelycore09', tokenCredentialId: 'slack-secret'
 	}
 }
