@@ -12,6 +12,6 @@ node{
 	}
 	}
 	stage('Slack Notification'){
-		slackSend channel: '#intelycore09', color: '#439FE0', message: 'build succeed', notifyCommitters: true, teamDomain: 'intelycore09', tokenCredentialId: 'slack-secret'
+		slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#intelycore09', color: '#439FE0', message: 'New Build deployed', teamDomain: 'intelycore09', tokenCredentialId: 'slack-secret'
 	}
 }
