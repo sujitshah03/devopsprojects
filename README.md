@@ -61,30 +61,52 @@ sudo service jenkins start
 
 Install Docker 
 
+* Step 1: Create Yum Repo
+
 ```
 sudo yum check-update
 
 sudo yum update -y 
 
-sudo yum install yum-utils device-mapper-persistent-data lvm2 -y
+sudo nano /etc/yum.repos.d/docker.repo
 
-sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+[docker-repo]
+Name=Docker Repository
+Baseurl=https://yum.dockerproject.org/repo/main/centos/7/
+enable=1
+gpgcheck=1
+gpgkey=https://yum.dockerproject.org/gpg
 
-yum install -y http://mirror.centos.org/centos/7/extras/x86_64/Packages/container-selinux-2.107-1.el7_6.noarch.rpm
+```
 
-sudo yum install docker-ce
+Step 2: Clean Yum Cache and Yum Update all Package
 
-sudo systemctl start docker
+```
+yum clean all
 
-sudo systemctl status docker
+yum repolist
 
-sudo systemctl enable docker
+yum update
 
+```
+
+Step 3: Command to Install Docker-Engine and start docker on Amazon Linux
+
+```
+yum install docker-engine
+
+systemctl enable docker
+
+systemctl start docker
+
+```
+
+Step 4: Adding/providing ec2-user to docker group
+
+```
 sudo usermod -aG docker $(whoami)
 
 sudo usermod -aG docker root jenkins
-
-sudo service jenkins restart
 
 ```
 
