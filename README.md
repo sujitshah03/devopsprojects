@@ -108,6 +108,8 @@ sudo usermod -aG docker $(whoami)
 
 sudo usermod -aG docker root jenkins
 
+sudo service jenkins restart
+
 ```
 
 Install Apache Maven
