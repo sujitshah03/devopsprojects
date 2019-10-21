@@ -21,7 +21,7 @@ node{
 	try{
 		def dockerRm = 'docker rm -f myweb'
 		sshagent(['docker-dev']) {
-			sh "ssh -o StrictHostKeyChecking=no ubuntu@34.230.45.59 ${dockerRm}"
+			sh "ssh -o StrictHostKeyChecking=no ubuntu@3.1.84.112 ${dockerRm}"
 		}
 	}catch(error){
 		//  do nothing if there is an exception
@@ -30,7 +30,7 @@ node{
  stage('Deploy to Dev Environment'){
    def dockerRun = 'docker run -d -p 8080:8080 --name myweb prabhatiitbhu/myweb:0.0.1 '
    sshagent(['docker-dev']) {
-    sh "ssh -o StrictHostKeyChecking=no ubuntu@34.230.45.59 ${dockerRun}"
+    sh "ssh -o StrictHostKeyChecking=no ubuntu@3.1.84.112 ${dockerRun}"
    }
 
  }
