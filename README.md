@@ -106,7 +106,7 @@ Step 4: Adding/providing ec2-user to docker group
 ```
 sudo usermod -aG docker $(whoami)
 
-sudo usermod -aG docker root jenkins
+sudo usermod -aG docker jenkins
 
 sudo service jenkins restart
 
