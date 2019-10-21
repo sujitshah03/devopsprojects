@@ -27,6 +27,17 @@ node{
 		//  do nothing if there is an exception
 	}
  }
+
+stage('Remove Previous Image'){
+	try{
+		def dockerRmi = 'docker rmi prabhatiitbhu/myweb'
+		sshagent(['docker-dev']) {
+			sh "ssh -o StrictHostKeyChecking=no ubuntu@3.1.84.112 ${dockerRmi}"
+		}
+	}catch(error){
+		//  do nothing if there is an exception
+	}
+ }
  stage('Deploy to Dev Environment'){
    def dockerRun = 'docker run -d -p 8080:8080 --name myweb prabhatiitbhu/myweb:0.0.1 '
    sshagent(['docker-dev']) {
