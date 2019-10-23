@@ -21,7 +21,7 @@ node{
 	try{
 		def dockerRm = 'docker rm -f myweb'
 		sshagent(['docker-dev']) {
-			sh "ssh -o StrictHostKeyChecking=no ubuntu@3.1.84.112 ${dockerRm}"
+			sh "ssh -o StrictHostKeyChecking=no ubuntu@13.229.103.251 ${dockerRm}"
 		}
 	}catch(error){
 		//  do nothing if there is an exception
@@ -32,7 +32,7 @@ stage('Update Previous Image'){
 	try{
 		def dockerImage = 'docker pull prabhatiitbhu/myweb:0.0.1'
 		sshagent(['docker-dev']) {
-			sh "ssh -o StrictHostKeyChecking=no ubuntu@3.1.84.112 ${dockerImage}"
+			sh "ssh -o StrictHostKeyChecking=no ubuntu@13.229.103.251 ${dockerImage}"
 		}
 	}catch(error){
 		//  do nothing if there is an exception
@@ -41,7 +41,7 @@ stage('Update Previous Image'){
  stage('Deploy to Dev Environment'){
    def dockerRun = 'docker run -d -p 8080:8080 --name myweb prabhatiitbhu/myweb:0.0.1'
    sshagent(['docker-dev']) {
-    sh "ssh -o StrictHostKeyChecking=no ubuntu@3.1.84.112 ${dockerRun}"
+    sh "ssh -o StrictHostKeyChecking=no ubuntu@13.229.103.251 ${dockerRun}"
    }
 
  }
