@@ -28,18 +28,18 @@ node{
 	}
  }
 
-stage('Remove Previous Image'){
+stage('Update Previous Image'){
 	try{
-		def dockerRmi = 'docker rmi prabhatiitbhu/myweb'
+		def dockerImage = 'docker pull prabhatiitbhu/myweb:0.0.1'
 		sshagent(['docker-dev']) {
-			sh "ssh -o StrictHostKeyChecking=no ubuntu@3.1.84.112 ${dockerRmi}"
+			sh "ssh -o StrictHostKeyChecking=no ubuntu@3.1.84.112 ${dockerImage}"
 		}
 	}catch(error){
 		//  do nothing if there is an exception
 	}
  }
  stage('Deploy to Dev Environment'){
-   def dockerRun = 'docker run -d -p 8080:8080 --name myweb prabhatiitbhu/myweb:0.0.1 '
+   def dockerRun = 'docker run -d -p 8080:8080 --name myweb prabhatiitbhu/myweb:0.0.1'
    sshagent(['docker-dev']) {
     sh "ssh -o StrictHostKeyChecking=no ubuntu@3.1.84.112 ${dockerRun}"
    }
