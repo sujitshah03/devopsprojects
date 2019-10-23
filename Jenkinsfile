@@ -17,6 +17,18 @@ node{
      }
 	 sh 'docker push prabhatiitbhu/myweb:0.0.1'
  }
+
+	
+stage('Update Previous Image'){
+	try{
+		def dockerImage = 'docker pull prabhatiitbhu/myweb:0.0.1'
+		sshagent(['docker-dev']) {
+			sh "ssh -o StrictHostKeyChecking=no ubuntu@13.229.103.251 ${dockerImage}"
+		}
+	}catch(error){
+		//  do nothing if there is an exception
+	}
+ }
  stage('Remove Previous Container'){
 	try{
 		def dockerRm = 'docker rm -f myweb'
@@ -28,16 +40,6 @@ node{
 	}
  }
 
-stage('Update Previous Image'){
-	try{
-		def dockerImage = 'docker pull prabhatiitbhu/myweb:0.0.1'
-		sshagent(['docker-dev']) {
-			sh "ssh -o StrictHostKeyChecking=no ubuntu@13.229.103.251 ${dockerImage}"
-		}
-	}catch(error){
-		//  do nothing if there is an exception
-	}
- }
  stage('Deploy to Dev Environment'){
    def dockerRun = 'docker run -d -p 8080:8080 --name myweb prabhatiitbhu/myweb:0.0.1'
    sshagent(['docker-dev']) {
