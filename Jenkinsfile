@@ -21,7 +21,7 @@ stage('Slack Notification'){
 	}
 	
 stage('Email Notification'){
-	mail bcc: '', body: 'build success done', cc: '', from: 'prabhat@aptence.com', replyTo: 'prabhatiitbhu@gmail.com', subject: 'build success', to: 'prabhat@aptence.com'
+	mail bcc: '', body: 'build success done', cc: '', from: 'prabhat@aptence.com', replyTo: 'prabhatiitbhu@gmail.com', subject: 'build success by prabhat', to: 'prabhatiitbhu@gmail.com'
 	}
   
 }
