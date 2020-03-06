@@ -12,4 +12,11 @@ stage('Build Docker Imager'){
    sh 'docker build -t prabhatiitbhu/myweb:0.0.1 .'
  }
 	
+stage('Push to Docker Hub'){
+	 withCredentials([string(credentialsId: 'dockerHubPwd', variable: 'dockerHubPwd')]) {
+        sh "docker login -u prabhatiitbhu -p ${dockerHubPwd}"
+     }
+	 sh 'docker push prabhatiitbhu/myweb:0.0.1'
+ }
+	
 }
