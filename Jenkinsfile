@@ -29,6 +29,16 @@ stage('Update Previous Image'){
 		//  do nothing if there is an exception
 	}
  }
+stage('Remove Previous running Container'){
+	try{
+		def dockerContainer = 'docker rm -f $(docker ps -aqf "name=myweb")'
+		sshagent(['docker-dev']) {
+			sh "ssh -o StrictHostKeyChecking=no ubuntu@54.197.81.55 ${dockerContainer}"
+		}
+	}catch(error){
+		//  do nothing if there is an exception
+	}
+ }
 	
 stage('Deploy to Dev Environment'){
    def dockerRun = 'docker run -d -p 8080:8080 --name myweb prabhatiitbhu/myweb:0.0.1'
