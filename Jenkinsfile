@@ -19,4 +19,15 @@ stage('Push to Docker Hub'){
 	 sh 'docker push prabhatiitbhu/myweb:0.0.1'
  }
 	
+stage('Update Previous Image'){
+	try{
+		def dockerImage = 'docker pull prabhatiitbhu/myweb:0.0.1'
+		sshagent(['docker-dev']) {
+			sh "ssh -o StrictHostKeyChecking=no ubuntu@54.197.81.55 ${dockerImage}"
+		}
+	}catch(error){
+		//  do nothing if there is an exception
+	}
+ }
+	
 }
