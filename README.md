@@ -102,9 +102,9 @@ cd /opt
 
 sudo wget http://www-us.apache.org/dist/tomcat/tomcat-9/v9.0.38/bin/apache-tomcat-9.0.38.tar.gz
 
-sudo tar -xvf apache-tomcat-9.0.31.tar.gz
+sudo tar -xvf apache-tomcat-9.0.38.tar.gz
 
-sudo mv apache-tomcat-9.0.31 tomcat9
+sudo mv apache-tomcat-9.0.38 tomcat9
 
 echo "export CATALINA_HOME="/opt/tomcat9"" >> ~/.bashrc
 
