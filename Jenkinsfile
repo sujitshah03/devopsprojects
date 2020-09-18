@@ -11,7 +11,7 @@ node{
 	
 	stage('deploy to Tomcat') {
 	  sh 'who'
-	  sh 'scp -i /var/lib/jenkins/jenkins-demo.pem -o StrictHostKeyChecking=no target/*.war ec2-user@100.26.175.204:/opt/tomcat9/webapps/'
+	  sh 'scp -i /home/ec2-user/jenkins-demo.pem -o StrictHostKeyChecking=no target/*.war ec2-user@100.26.175.204:/opt/tomcat9/webapps/'
 	}
   
   
