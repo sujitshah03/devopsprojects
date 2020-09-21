@@ -35,6 +35,17 @@ java -version
 
 ```
 
+update JAVA_HOME
+
+```
+nano .bash_profile
+
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.191.b12-0.amzn2.x86_64/jre
+export PATH=$PATH:$JAVA_HOME/bin
+
+source .bash_profile
+```
+
 ```
 sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
@@ -110,11 +121,11 @@ echo $JAVA_HOME
 ```
 cd /opt
 
-sudo wget http://www-us.apache.org/dist/tomcat/tomcat-9/v9.0.14/bin/apache-tomcat-9.0.14.tar.gz
+sudo wget http://www-us.apache.org/dist/tomcat/tomcat-9/v9.0.38/bin/apache-tomcat-9.0.38.tar.gz
 
-sudo tar -xvf apache-tomcat-9.0.14.tar.gz
+sudo tar -xvf apache-tomcat-9.0.38.tar.gz
 
-sudo mv apache-tomcat-9.0.14 tomcat9
+sudo mv apache-tomcat-9.0.38 tomcat9
 
 echo "export CATALINA_HOME="/opt/tomcat9"" >> ~/.bashrc
 
