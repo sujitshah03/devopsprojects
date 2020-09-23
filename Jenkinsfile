@@ -1,6 +1,6 @@
 node{
   stage('SCM Checkout'){
-	  git branch: 'wartomcat', url: 'https://github.com/prabhatpankaj/devopsprojects.git'
+	  git branch: 'smtpjenkins', url: 'https://github.com/prabhatpankaj/devopsprojects.git'
   
 	}
   
@@ -11,13 +11,13 @@ node{
   
   stage('Deploy to Tomcat'){
 	  sshagent(['tomcat-dev']) {
-	    sh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@18.234.143.115:/opt/tomcat9/webapps/'
+	    sh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@3.84.194.194:/opt/tomcat9/webapps/'
 	}
   
 	}
 	
 stage('Slack Notification'){
-	slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#jenkinsnotification', color: '#fc0324', message: 'New Build deployed by prabhat', teamDomain: 'intelycoreworkspace', tokenCredentialId: 'slack-secret'
+	slackSend baseUrl: 'https://hooks.slack.com/services/', channel: 'jenkinsdemo', color: '"#439FE0"', message: "job started", teamDomain: 'aptence', tokenCredentialId: 'slack-secret'
 	}
 	
 stage('Email Notification'){
