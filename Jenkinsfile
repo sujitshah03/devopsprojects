@@ -14,6 +14,6 @@ node{
 	}
    }
 	stage('Slack Notification'){
-	slackSend baseUrl: baseUrl: 'https://hooks.slack.com/services/', botUser: true, channel: '#webapps', color: '#439FE0', message: "job started" , notifyCommitters: true, tokenCredentialId: 'slack-secret', username: 'devops-hvs5481'
+	slackSend baseUrl:'https://hooks.slack.com/services/', botUser: true, channel: '#webapps', color: '#439FE0', message: "job started" , notifyCommitters: true, tokenCredentialId: 'slack-secret', username: 'devops-hvs5481'
 	}
 }
