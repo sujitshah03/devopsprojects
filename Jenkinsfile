@@ -17,9 +17,7 @@ node{
 stage('Slack Notification'){
 	slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#webapps', color: '#439FE0', message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}", tokenCredentialId: 'slack-secret'
 	}
-  
-}
-	
+  	
 stage('Email Notification'){
 	mail bcc: 'a.sujitshah34@gmail.com', body: 'message', cc: 'a.sujitshah34@gmail.com', from: 'anhuman74@gmail.com', replyTo: 'a.sujitshah34@gmail.com', subject: 'message', to: 'a.sujitshah34@gmail.com'
 	}
