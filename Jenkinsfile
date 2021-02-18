@@ -1,20 +1,18 @@
 node{
   stage('SCM Checkout'){
-	  git branch: 'wartomcat', url: 'https://github.com/prabhatpankaj/devopsprojects.git'
+	  git branch: 'wartomcat', url: 'https://github.com/sujitshah03/devopsprojects.git'
   
 	}
   
   stage('Compile-Package'){
-	 def mvnHome = tool name: 'maven-3.5.4', type: 'maven'
+	 def mvnHome = tool name: 'apache-maven-3.6.3', type: 'maven'
   	 sh "${mvnHome}/bin/mvn package"
 	}
-  
   stage('Deploy to Tomcat'){
-	  sshagent(['tomcat-dev']) {
-	    sh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@100.26.202.223:/opt/tomcat9/webapps/'
+	sshagent(['sujit01']) {
+	sh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@52.23.163.71:/opt/tomcat9/webapps/'
 	}
-  
-	}
+   }
 	
 stage('Slack Notification'){
 	slackSend baseUrl: 'https://hooks.slack.com/services/' channel: '#webapps', color: '#439FE0', message: 'Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}', tokenCredentialId: 'slack-secret'
