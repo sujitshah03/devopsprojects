@@ -15,7 +15,7 @@ node{
    }
 	
 stage('Slack Notification'){
-	slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#webapps', color: '#439FE0', message: 'Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}', tokenCredentialId: 'slack-secret'
+	slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#webapps', color: '#439FE0', message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}", tokenCredentialId: 'slack-secret'
 	}
   
 }
