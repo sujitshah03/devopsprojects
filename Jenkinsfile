@@ -17,7 +17,7 @@ node{
 	}
 	
 stage('Slack Notification'){
-	slackSend baseUrl: 'https://hooks.slack.com/services/', channel: 'jenkinsdemo', color: '"#439FE0"', message: "job started", teamDomain: 'aptence', tokenCredentialId: 'slack-secret'
+	slackSend channel: '#webapps', color: '#439FE0', message: 'Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}', tokenCredentialId: 'slack-secret'
 	}
   
 }
